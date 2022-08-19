@@ -1,4 +1,4 @@
-module Config.Internal where
+module JsonConfig.Internal where
 
 import           Control.Lens (both, over)
 import           Data.Aeson

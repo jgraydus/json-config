@@ -4,10 +4,10 @@ version:            0.1.0.0
 
 library
     exposed-modules:
-      Config
+      JsonConfig
     other-modules:
-      Config.Constants,
-      Config.Internal
+      JsonConfig.Constants,
+      JsonConfig.Internal
     build-depends:
       aeson,
       attoparsec,
@@ -22,3 +22,4 @@ library
     default-extensions:
         OverloadedStrings,
         ScopedTypeVariables
+

@@ -1,9 +1,9 @@
-module Config (
+module JsonConfig (
     readConfig
 ) where
 
-import Config.Constants
-import Config.Internal
+import JsonConfig.Constants
+import JsonConfig.Internal
 import Data.Aeson
 import Data.Char (toLower)
 
