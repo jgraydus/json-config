@@ -42,12 +42,17 @@ instance ToJSON Context where
     object (second String <$> H.toList h)
 #endif
 
+extractString :: (k, Value) -> (k, T.Text)
+extractString val = case val of
+  (k, String v) -> (k, v)
+  _             -> error "expected a String (Value constructor)"
+
 instance FromJSON Context where
   parseJSON (Object o) = return
 #if MIN_VERSION_aeson(2,0,0)
-    Context { variables = H.fromList ((\(k,String v) -> (k,v)) <$> H.toList (KM.toHashMapText o)) }
+    Context { variables = H.fromList (extractString <$> H.toList (KM.toHashMapText o)) }
 #else
-    Context { variables = H.fromList ((\(k,String v) -> (k,v)) <$> H.toList o) }
+    Context { variables = H.fromList (extractString <$> H.toList o) }
 #endif
   parseJSON _          = fail "expected an object"
 

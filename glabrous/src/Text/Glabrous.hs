@@ -161,7 +161,11 @@ fromTagsList ts = fromList $ (,T.empty) <$> ts
 
 -- | Build an unset ad hoc 'Context' from the given 'Template'.
 fromTemplate :: Template -> Context
-fromTemplate t = setVariables ((\(Tag e) -> (e,T.empty)) <$> tagsOf t) initContext
+fromTemplate t = setVariables (pairTagWithEmpty <$> tagsOf t) initContext
+  where
+    expectTag (Tag e) = e
+    expectTag _ = error "expected Tag"
+    pairTagWithEmpty = (, T.empty) . expectTag
 
 -- | Get a 'Context' from a JSON file.
 readContextFile :: FilePath -> IO (Maybe Context)
