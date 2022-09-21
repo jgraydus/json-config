@@ -1,4 +1,0 @@
-packages:
-  ./json-config.cabal
-  ./glabrous/glabrous.cabal
-
