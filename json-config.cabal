@@ -11,10 +11,10 @@ library
     build-depends:
       aeson,
       attoparsec,
-      base ^>=4.16.1.0,
+      base < 5.0,
       bytestring,
       containers,
-      glabrous >=2.0.6,
+      glabrous,
       lens,
       text
     hs-source-dirs:   lib
