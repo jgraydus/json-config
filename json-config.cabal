@@ -11,6 +11,7 @@ library
     build-depends:
       aeson,
       attoparsec,
+      attoparsec-aeson,
       base < 5.0,
       bytestring,
       containers,
